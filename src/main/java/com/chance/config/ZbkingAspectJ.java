@@ -21,20 +21,40 @@ public class ZbkingAspectJ {
 
     }
 
+    /**
+     * @See https://shimo.im/docs/Nj0bcFUy3SYyYnbI/read
+     * execution和within的区别？
+     *  execution的最小粒度到方法的参数，返回值，
+     *  within只能到类
+     */
     @Pointcut("within(com.chance.dao.*)")
     public void pointCutWithin(){
 
     }
 
+    //给方法加参数的匹配
+    @Pointcut("execution(* com.chance.dao.*.*(String ))")
+    public void poinctCutWithExecution2(){
 
+    }
+    //args匹配的是类型
+    @Pointcut("args(java.lang.Integer)")
+    public void pointArgs(){
+
+    }
 
     /**
      *通知
      */
-    @Before("pointCutWithin()")
+//    @Before("poinctCutWithExecution2()")
+//    @B
+//    efore("poinctCutWithExecution2()&&!pointArgs()")
+   @Before("pointCutWithExecution()")
     public void before(){
+
         System.out.println("search之前");
 
     }
+
 
 }
