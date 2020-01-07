@@ -42,6 +42,11 @@ public class ZbkingAspectJ {
     public void pointArgs(){
 
     }
+    //this表示代理的对象；
+    //target代表目标对象;
+    public void pointThis(){
+
+    }
 
     /**
      *通知
