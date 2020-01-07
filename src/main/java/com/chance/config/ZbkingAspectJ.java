@@ -1,10 +1,8 @@
 package com.chance.config;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 //将这个类交给spring容器
 
@@ -54,14 +52,33 @@ public class ZbkingAspectJ {
 //    @Before("poinctCutWithExecution2()")
 //    @B
 //    efore("poinctCutWithExecution2()&&!pointArgs()")
-   @Before("pointCutWithExecution()")
-    public void before(){
-
-        System.out.println("search之前");
-
-    }
+//   @Before("pointCutWithExecution()")
+//    public void before(){
+//
+//        System.out.println("search之前");
+//
+//    }
 
     //环绕通知
+    //ProceedingJoinPoint的proceed方法就是目标方法
+    //环绕通知很多时候是用来改变参数
+    @Around("pointCutWithin()")
+    public void around(ProceedingJoinPoint proceedingJoinPoint){
+        System.out.println("around前");
+        Object[] args = proceedingJoinPoint.getArgs();
+        if (args!=null&&args.length>0){
+            for (int i = 0; i <args.length ; i++) {
+                        args[i]+="666";
+            }
+        }
+
+        try {
+            Object proceed = proceedingJoinPoint.proceed(args);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        System.out.println("around后");
+    }
 
 
 

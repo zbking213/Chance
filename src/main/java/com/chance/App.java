@@ -14,21 +14,23 @@ import java.lang.reflect.Proxy;
 
 public class App {
     public static void main(String[] args) throws FileNotFoundException {
-//        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
-//        IndexDao indexDao = (IndexDao) annotationConfigApplicationContext.getBean("indexDao");
-//        indexDao.search("狗子");
-//        indexDao.search();
-        Class<?>[] interfaces = new Class[]{Dao.class};
-        byte[] zbkings = ProxyGenerator.generateProxyClass("zbking", interfaces);
-        File file = new File("d:\\zbking.class");
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        try {
+        AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        IndexDao indexDao = (IndexDao) annotationConfigApplicationContext.getBean("indexDao");
+        indexDao.search("狗子");
+        System.out.println("----------------");
+        indexDao.search();
 
-            fileOutputStream.write(zbkings);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        Class<?>[] interfaces = new Class[]{Dao.class};
+//        byte[] zbkings = ProxyGenerator.generateProxyClass("zbking", interfaces);
+//        File file = new File("d:\\zbking.class");
+//        FileOutputStream fileOutputStream = new FileOutputStream(file);
+//        try {
+//
+//            fileOutputStream.write(zbkings);
+//            fileOutputStream.flush();
+//            fileOutputStream.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }

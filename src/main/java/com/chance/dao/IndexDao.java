@@ -11,5 +11,6 @@ public class IndexDao {
 
     public void search(String name){
         System.out.println("search"+name);
+        System.out.println(name);
     }
 }
