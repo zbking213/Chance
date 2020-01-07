@@ -11,7 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect  //声明一个切面
 public class ZbkingAspectJ {
+
+    //@See https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/core.html#aop-pointcuts
     //声明一个pointcut
+    //*  execution(modifiers-pattern? ret-type-pattern declaring-type-pattern?name-pattern(param-pattern)
+    //                throws-pattern?)
     @Pointcut("execution(* com.chance.dao.*.*(..))")
     public void pointCutWithExecution(){
 
