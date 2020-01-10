@@ -16,4 +16,9 @@ public class UserDaoLog2 implements UserDao {
         userDao.query();
 
     }
+
+    @Override
+    public void eat() {
+        System.out.println("翻翻22");
+    }
 }

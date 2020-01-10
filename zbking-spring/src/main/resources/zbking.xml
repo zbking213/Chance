@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ 1，哪些类需要我关联
+ 2，怎么告诉我这些类<bean>标签
+ 3，怎么维护他们的关系（setter，构造方法）
+ 4，怎么体现（property）（cons）
+ -->
+<beans>
+    <bean id="userDao" class="com.six.dao.UserDaoImpl"></bean>
+    <bean id="userService" class="com.six.service.UserServiceImpl">
+        <!-- setter -->
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+<!--    <bean id="userService" class="com.six.service.UserServiceImpl">-->
+<!--        &lt;!&ndash;constructor-arg &ndash;&gt;-->
+<!--        <constructor-arg name="userDao" ref="userDao"></constructor-arg>-->
+<!--    </bean>-->
+</beans>
